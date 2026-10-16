@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notebook with a feather pen writing on the page; the feather points to the right. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Cover -->
+    <path
+        android:fillColor="#1E3A5F"
+        android:pathData="M34,28h34a4,4 0,0 1,4 4v44a4,4 0,0 1,-4 4h-34a4,4 0,0 1,-4 -4v-44a4,4 0,0 1,4 -4z" />
+    <!-- Page -->
+    <path
+        android:fillColor="#FFF8E7"
+        android:pathData="M38,31h30a2,2 0,0 1,2 2v42a2,2 0,0 1,-2 2h-30z" />
+    <!-- Binding rings -->
+    <path
+        android:fillColor="#C9D3E6"
+        android:pathData="M28,35h10v3h-10zM28,45h10v3h-10zM28,55h10v3h-10zM28,65h10v3h-10z" />
+    <!-- Ruled lines -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#B7C3DA"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:pathData="M43,40h22M43,48h22" />
+    <!-- Handwriting that ends at the pen nib -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#1E3A5F"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M43,59c1.5,-5 3,-5 4.5,0s3,5 4.5,0" />
+    <!-- Feather pen: nib on the page, plume pointing up and to the right -->
+    <path
+        android:fillColor="#F7F2E8"
+        android:strokeColor="#1E3A5F"
+        android:strokeWidth="1"
+        android:strokeLineJoin="round"
+        android:pathData="M54,60C56,51 66,39 80,32C78,44 68,56 57,63z" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#1E3A5F"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:pathData="M53,61L78,34M62,48L68,49M67,42L72,43M58,54L63,55" />
+</vector>

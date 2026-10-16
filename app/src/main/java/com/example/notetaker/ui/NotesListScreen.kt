@@ -209,18 +209,11 @@ private fun NoteCard(note: Note, onClick: () -> Unit, onLongClick: () -> Unit) {
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.primary
             )
-            if (note.title.isNotBlank()) {
-                Text(
-                    note.title,
-                    style = MaterialTheme.typography.titleMedium,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
+            // Just the name and line count. An unnamed note falls back to its first line as the name.
             Text(
-                lines.firstOrNull() ?: "(empty)",
-                style = MaterialTheme.typography.bodyLarge,
-                maxLines = if (note.title.isNotBlank()) 1 else 2,
+                note.title.ifBlank { lines.firstOrNull() ?: "(empty)" },
+                style = MaterialTheme.typography.titleMedium,
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Text(

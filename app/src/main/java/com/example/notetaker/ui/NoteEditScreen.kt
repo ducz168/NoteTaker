@@ -2,6 +2,7 @@ package com.example.notetaker.ui
 
 import android.app.Application
 import androidx.activity.compose.BackHandler
+import android.content.Intent
 import android.util.Log
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.runtime.rememberCoroutineScope
@@ -129,7 +130,8 @@ private fun RepeatPadButton(label: String, modifier: Modifier, onAction: () -> U
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun NoteEditScreen(noteId: Long, templateId: Long = 0L, onClose: () -> Unit) {
-    val app = LocalContext.current.applicationContext as Application
+    val context = LocalContext.current
+    val app = context.applicationContext as Application
     val viewModel: NoteEditViewModel = viewModel(
         key = "note-$noteId-$templateId",
         factory = viewModelFactory { initializer { NoteEditViewModel(app, noteId, templateId) } }
@@ -244,6 +246,20 @@ fun NoteEditScreen(noteId: Long, templateId: Long = 0L, onClose: () -> Unit) {
                         Icon(Icons.Default.MoreVert, contentDescription = "More")
                     }
                     DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
+                        DropdownMenuItem(
+                            text = { Text("Share") },
+                            enabled = value.text.isNotBlank(),
+                            onClick = {
+                                menuOpen = false
+                                val body = if (noteTitle.isBlank()) value.text else "$noteTitle\n\n${value.text}"
+                                val send = Intent(Intent.ACTION_SEND).apply {
+                                    type = "text/plain"
+                                    if (noteTitle.isNotBlank()) putExtra(Intent.EXTRA_SUBJECT, noteTitle)
+                                    putExtra(Intent.EXTRA_TEXT, body)
+                                }
+                                context.startActivity(Intent.createChooser(send, "Share note"))
+                            }
+                        )
                         DropdownMenuItem(
                             text = { Text("Rename") },
                             onClick = {

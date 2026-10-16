@@ -10,3 +10,10 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+# ML Kit Digital Ink builds its model identifiers and recognizers reflectively; R8 stripped them in release.
+-keep class com.google.mlkit.** { *; }
+-keep class com.google.android.gms.internal.mlkit_** { *; }
+-dontwarn com.google.mlkit.**
+
+# ViewModels are created reflectively by the default factory.
+-keepclassmembers class * extends androidx.lifecycle.ViewModel { <init>(...); }
